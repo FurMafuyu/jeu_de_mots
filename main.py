@@ -2,6 +2,7 @@ import requests
 import json
 
 # A r B -> je cherche un C tq A r_isa C et C r B.
+# Il faut préciser le schéma d'inférence. A r C et C r B peut être suffisant.
 
 relations = {
     "r_isa" : "6",
@@ -35,6 +36,7 @@ def main():
     print("Bonjour, entrez votre requête :")
     requete = input(str())
     array = requete.split()
+    # TODO : changer le split " " en split "r_"
     
     # TODO
     node1 = array[0]
