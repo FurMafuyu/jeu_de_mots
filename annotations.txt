@@ -1,0 +1,6 @@
+annotations c comme un node
+
+id = xxxxx pour un truc genre A R B
+
+et :rxxxx c'est un node au mm titre que "pigeon"
+r_annotation 998

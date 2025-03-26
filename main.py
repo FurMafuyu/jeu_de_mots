@@ -15,7 +15,7 @@ relations = {
     "r_agent-1": "24"
 }
 
-def testRel(node1, node2, rel):
+def testRelation(node1, node2, rel):
     urlR = "https://jdm-api.demo.lirmm.fr/v0/relations/from/" + node1 + "/to/" + node2 + "?types_ids=" + rel
 
     r = requests.get(urlR)
@@ -35,13 +35,13 @@ def getName(node, nodes):
         if e['id'] == node:
             return e['name']
 
-def getNode2(id, nodes):
+def getNode2(id : str, nodes : list) -> dict:
     for elem in nodes:
         if elem['id'] == id:
             return elem
     return 0
 
-def main():
+def oldMain():
     init()
     print("Bonjour, entrez votre requête :")
     requete = input(str())
@@ -71,7 +71,7 @@ def main():
             pass
         else:
             node2Rel = getNode2(e['node2'], nodes)
-            local = testRel(node2Rel['name'], node2, rel)
+            local = testRelation(node2Rel['name'], node2, rel)
             if local.get('nodes'):
                 finalC = node2Rel['name']
                 test = 1
@@ -95,7 +95,7 @@ def init():
             json.dump(res, f, indent=4, ensure_ascii=False)
             
 
-def getRelId(rel):
+def getRelId(rel : str) -> str:
     with open("relations.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -114,4 +114,4 @@ with open("pigeon.json", "w", encoding="utf-8") as f:
 """
 # https://jdm-api.demo.lirmm.fr/v0/node_by_name/{node1_name}
 # https://jdm-api.demo.lirmm.fr/v0/relations/from/{node1_name}/to/{node2_name}
-main()
+# main()
