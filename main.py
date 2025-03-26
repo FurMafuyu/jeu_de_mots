@@ -102,20 +102,8 @@ def getRelId(rel):
     name_to_id = {item["name"]: item["id"] for item in data}
 
     return str(name_to_id.get(rel))
-
-# récup toutes les relations, pour vérifier plus tard ?
-def getRelsOfNode(node):
-    with open("relations.json", "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    name_to_id = {item["name"]: item["id"] for item in data}
-
-    for i in name_to_id:
-        res = requests.get("https://jdm-api.demo.lirmm.fr/v0/relations/from/"+node+"?types_ids="+rel).json()
-        nodes = res['nodes']
-        rels = res['relations']
     
-    return nodes,rels
+
 
     
 
